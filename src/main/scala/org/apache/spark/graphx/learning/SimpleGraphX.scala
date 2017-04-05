@@ -158,6 +158,7 @@ object SimpleGraphX {
     println("聚合操作")
     println("**********************************************************")
     println("找出年纪最大的追求者：")
+    //spark2.0版本 mapReduceTriplets 更新为 aggregateMessages
     val oldestFollower: VertexRDD[(String, Int)] = userGraph.mapReduceTriplets[(String, Int)](
       // 将源顶点的属性发送给目标顶点，map过程
       edge => Iterator((edge.dstId, (edge.srcAttr.name, edge.srcAttr.age))),
